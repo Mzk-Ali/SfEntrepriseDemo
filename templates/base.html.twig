@@ -2,16 +2,28 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <link rel="stylesheet" href="{{asset('css/style.css')}}">
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_entreprise') }}">Liste des entreprises</a></li>
+                <li><a href="{{ path('app_employe') }}">Liste des employés</a></li>
+                <li><a href="{{ path('new_entreprise') }}">Ajouter une entreprise</a></li>
+                <li><a href="{{ path('new_employe') }}">Ajouter un employé</a></li>
+            </ul>
+        </nav>
+        <main class="container">
+            {% block body %}{% endblock %}
+        </main>
+
+        {% block javascripts %}
+        {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+            <script src="{{ asset('js/script.js')}}"></script>
+        {% endblock %}
     </body>
 </html>
